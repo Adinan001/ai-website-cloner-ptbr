@@ -1,171 +1,195 @@
-# AI Website Cloner Template
+# AI Website Cloner Template — Tradução PT-BR 🇧🇷
 
 <a href="https://github.com/JCodesMore/ai-website-cloner-template/blob/master/LICENSE"><img src="https://img.shields.io/badge/license-MIT-blue" alt="MIT License" /></a> <a href="https://github.com/JCodesMore/ai-website-cloner-template/stargazers"><img src="https://img.shields.io/github/stars/JCodesMore/ai-website-cloner-template?style=flat" alt="Stars" /></a> <a href="https://discord.gg/hrTSX5yTpB"><img src="https://img.shields.io/discord/1400896964597383279?label=discord" alt="Discord" /></a>
 
-A reusable template for reverse-engineering any website into a clean, modern Next.js codebase using AI coding agents. 
+> **Créditos:** Este repositório é uma tradução para o português brasileiro do projeto original [ai-website-cloner-template](https://github.com/JCodesMore/ai-website-cloner-template), criado por [JCodesMore](https://github.com/JCodesMore). Todo o código, arquitetura e lógica do skill pertencem ao autor original. Esta versão tem apenas o objetivo de tornar a documentação acessível para a comunidade brasileira.
 
-**Recommended: [Claude Code](https://docs.anthropic.com/en/docs/claude-code) with Opus 4.8 for best results** — but works with a variety of AI coding agents.
+Um template reutilizável para engenharia reversa de qualquer site, transformando-o em uma base de código Next.js limpa e moderna usando agentes de codificação com IA.
 
-Point it at a URL, run `/clone-website`, and your AI agent will inspect the site, extract design tokens and assets, write component specs, and dispatch parallel builders to reconstruct every section.
+**Recomendado: [Claude Code](https://docs.anthropic.com/en/docs/claude-code) com Opus 4.8 para melhores resultados** — mas funciona com diversos agentes de codificação com IA.
 
-## Demo
+Aponte para uma URL, execute `/clone-website`, e seu agente de IA inspecionará o site, extrairá tokens de design e assets, escreverá especificações de componentes e despachará construtores em paralelo para reconstruir cada seção.
 
-[![Watch the demo](docs/design-references/comparison.png)](https://youtu.be/O669pVZ_qr0)
+## Demonstração
 
-> Click the image above to watch the full demo on YouTube.
+[![Assista à demonstração](docs/design-references/comparison.png)](https://youtu.be/O669pVZ_qr0)
 
-## Quick Start
+> Clique na imagem acima para assistir à demonstração completa no YouTube.
 
-> **Important:** Start by making your own copy with GitHub's **Use this template** button. Do not clone this template repository directly for your website project, and do not open pull requests here with your generated website.
+## Início Rápido
 
-1. **Create your own repository from this template**
+> **Importante:** Comece criando sua própria cópia com o botão **Use this template** do GitHub. Não clone este repositório de template diretamente para o seu projeto de site, e não abra pull requests aqui com o site que você gerou.
 
-   On the GitHub page for this project, click **Use this template**, then click **Create a new repository**.
+1. **Crie seu próprio repositório a partir deste template**
 
-   Give your new repository a name, choose whether it should be public or private, then click **Create repository**. If GitHub shows an **Include all branches** option, you can leave it off.
+   Na página do GitHub deste projeto, clique em **Use this template** e depois em **Create a new repository**.
 
-   This gives you your own separate project to work in, so your website changes stay in your account instead of coming back to the main template.
+   Dê um nome ao seu novo repositório, escolha se ele será público ou privado e clique em **Create repository**. Se o GitHub mostrar a opção **Include all branches**, pode deixar desmarcada.
 
-2. **Open your new repository on your computer**
+   Isso lhe dá um projeto separado para trabalhar, de modo que as alterações do seu site fiquem na sua conta em vez de voltarem para o template principal.
 
-   After GitHub creates your copy, open that new repository. Click **Code** and open or clone your new repository with your preferred coding tool.
+2. **Abra seu novo repositório no computador**
 
-   If you use the terminal, the command will look like this:
+   Depois que o GitHub criar sua cópia, abra o novo repositório. Clique em **Code** e abra ou clone o repositório com a ferramenta de codificação de sua preferência.
+
+   No terminal, o comando será:
 
    ```bash
-   git clone https://github.com/YOUR-USERNAME/YOUR-NEW-REPOSITORY.git
-   cd YOUR-NEW-REPOSITORY
+   git clone https://github.com/SEU-USUARIO/SEU-NOVO-REPOSITORIO.git
+   cd SEU-NOVO-REPOSITORIO
    ```
 
-3. **Install dependencies**
+3. **Instale as dependências**
    ```bash
    npm install
    ```
-4. **Start your AI agent** — Claude Code recommended:
+4. **Inicie seu agente de IA** — Claude Code recomendado:
    ```bash
    claude --chrome
    ```
-5. **Run the skill**:
+   > **Nota para Windows:** Se o Chrome MCP não conectar, use o Playwright MCP como alternativa:
+   > ```bash
+   > claude mcp add playwright -- npx -y @playwright/mcp@latest
+   > ```
+   > Depois reinicie o Claude Code com `claude` normalmente.
+
+5. **Execute o skill:**
    ```
-   /clone-website <target-url1> [<target-url2> ...]
+   /clone-website <url-alvo1> [<url-alvo2> ...]
    ```
-6. **Customize** (optional) — after the base clone is built, modify as needed
+6. **Personalize** (opcional) — após a clonagem base ser construída, modifique conforme necessário
 
-> Using a different agent? Open `AGENTS.md` for project instructions — most agents pick it up automatically.
+> Usando outro agente? Abra `AGENTS.md` para as instruções do projeto — a maioria dos agentes detecta automaticamente.
 
-## Supported Platforms
+## Plataformas Suportadas
 
-| Agent                                                         | Status                     |
-| ------------------------------------------------------------- | -------------------------- |
-| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | **Recommended** — Opus 4.8 |
-| [Codex CLI](https://github.com/openai/codex)                  | Supported                  |
-| [OpenCode](https://opencode.ai/)                              | Supported                  |
-| [GitHub Copilot](https://github.com/features/copilot)         | Supported                  |
-| [Cursor](https://cursor.com/)                                 | Supported                  |
-| [Windsurf](https://codeium.com/windsurf)                      | Supported                  |
-| [Gemini CLI](https://github.com/google-gemini/gemini-cli)     | Supported                  |
-| [Cline](https://github.com/cline/cline)                       | Supported                  |
-| [Roo Code](https://github.com/RooCodeInc/Roo-Code)            | Supported                  |
-| [Continue](https://continue.dev/)                             | Supported                  |
-| [Amazon Q](https://aws.amazon.com/q/developer/)               | Supported                  |
-| [Augment Code](https://www.augmentcode.com/)                  | Supported                  |
-| [Aider](https://aider.chat/)                                  | Supported                  |
+| Agente | Status |
+| --- | --- |
+| [Claude Code](https://docs.anthropic.com/en/docs/claude-code) | **Recomendado** — Opus 4.8 |
+| [Codex CLI](https://github.com/openai/codex) | Suportado |
+| [OpenCode](https://opencode.ai/) | Suportado |
+| [GitHub Copilot](https://github.com/features/copilot) | Suportado |
+| [Cursor](https://cursor.com/) | Suportado |
+| [Windsurf](https://codeium.com/windsurf) | Suportado |
+| [Gemini CLI](https://github.com/google-gemini/gemini-cli) | Suportado |
+| [Cline](https://github.com/cline/cline) | Suportado |
+| [Roo Code](https://github.com/RooCodeInc/Roo-Code) | Suportado |
+| [Continue](https://continue.dev/) | Suportado |
+| [Amazon Q](https://aws.amazon.com/q/developer/) | Suportado |
+| [Augment Code](https://www.augmentcode.com/) | Suportado |
+| [Aider](https://aider.chat/) | Suportado |
 
-## Prerequisites
+## Pré-requisitos
 
 - [Node.js](https://nodejs.org/) 24+
-- An AI coding agent (see [Supported Platforms](#supported-platforms))
+- Um agente de codificação com IA (veja [Plataformas Suportadas](#plataformas-suportadas))
 
-## Tech Stack
+## Stack Tecnológica
 
-- **Next.js 16** — App Router, React 19, TypeScript strict
-- **shadcn/ui** — Radix primitives + Tailwind CSS v4
-- **Tailwind CSS v4** — oklch design tokens
-- **Lucide React** — default icons (replaced by extracted SVGs during cloning)
+- **Next.js 16** — App Router, React 19, TypeScript estrito
+- **shadcn/ui** — Primitivos Radix + Tailwind CSS v4
+- **Tailwind CSS v4** — Tokens de design oklch
+- **Lucide React** — Ícones padrão (substituídos por SVGs extraídos durante a clonagem)
 
-## How It Works
+## Como Funciona
 
-The `/clone-website` skill runs a multi-phase pipeline:
+O skill `/clone-website` executa um pipeline em múltiplas fases:
 
-1. **Reconnaissance** — screenshots, design token extraction, interaction sweep (scroll, click, hover, responsive)
-2. **Foundation** — updates fonts, colors, globals, downloads all assets
-3. **Component Specs** — writes detailed spec files (`docs/research/components/`) with exact computed CSS values, states, behaviors, and content
-4. **Parallel Build** — dispatches builder agents in git worktrees, one per section/component
-5. **Assembly & QA** — merges worktrees, wires up the page, runs visual diff against the original
+1. **Reconhecimento** — capturas de tela, extração de tokens de design, varredura de interações (rolagem, clique, hover, responsividade)
+2. **Fundação** — atualiza fontes, cores, estilos globais, baixa todos os assets
+3. **Especificações de Componentes** — escreve arquivos de especificação detalhados (`docs/research/components/`) com valores CSS computados exatos, estados, comportamentos e conteúdo
+4. **Construção em Paralelo** — despacha agentes construtores em git worktrees, um por seção/componente
+5. **Montagem e QA** — mescla worktrees, conecta a página, executa comparação visual contra o original
 
-Each builder agent receives the full component specification inline — exact `getComputedStyle()` values, interaction models, multi-state content, responsive breakpoints, and asset paths. No guessing.
+Cada agente construtor recebe a especificação completa do componente inline — valores exatos de `getComputedStyle()`, modelos de interação, conteúdo com múltiplos estados, breakpoints responsivos e caminhos de assets. Sem adivinhação.
 
-## Use Cases
+## Casos de Uso
 
-- **Platform migration** — rebuild a site you own from WordPress/Webflow/Squarespace into a modern Next.js codebase
-- **Lost source code** — your site is live but the repo is gone, the developer left, or the stack is legacy. Get the code back in a modern format
-- **Learning** — deconstruct how production sites achieve specific layouts, animations, and responsive behavior by working with real code
+- **Migração de plataforma** — reconstrua um site que você possui, saindo de WordPress/Webflow/Squarespace para uma base de código Next.js moderna
+- **Código-fonte perdido** — seu site está no ar, mas o repositório sumiu, o desenvolvedor saiu ou a stack é legada. Recupere o código em formato moderno
+- **Aprendizado** — desconstrua como sites em produção alcançam layouts, animações e comportamento responsivo específicos, trabalhando com código real
 
-## Not Intended For
+## Não Destinado Para
 
-- **Phishing or impersonation** — this project must not be used for deceptive purposes, impersonation, or any activity that breaks the law.
-- **Passing off someone's design as your own** — logos, brand assets, and original copy belong to their owners.
-- **Violating terms of service** — some sites explicitly prohibit scraping or reproduction. Check first.
+- **Phishing ou falsificação de identidade** — este projeto não deve ser usado para fins enganosos, falsificação de identidade ou qualquer atividade que viole a lei.
+- **Apresentar o design de outra pessoa como seu** — logos, assets de marca e textos originais pertencem a seus proprietários.
+- **Violar termos de serviço** — alguns sites proíbem explicitamente scraping ou reprodução. Verifique antes.
 
-## Project Structure
+## Estrutura do Projeto
 
 ```
 src/
-  app/              # Next.js routes
-  components/       # React components
-    ui/             # shadcn/ui primitives
-    icons.tsx       # Extracted SVG icons
-  lib/utils.ts      # cn() utility
-  types/            # TypeScript interfaces
-  hooks/            # Custom React hooks
+  app/              # Rotas do Next.js
+  components/       # Componentes React
+    ui/             # Primitivos shadcn/ui
+    icons.tsx       # Ícones SVG extraídos
+  lib/utils.ts      # Utilitário cn()
+  types/            # Interfaces TypeScript
+  hooks/            # Hooks React customizados
 public/
-  images/           # Downloaded images from target
-  videos/           # Downloaded videos from target
-  seo/              # Favicons, OG images
+  images/           # Imagens baixadas do alvo
+  videos/           # Vídeos baixados do alvo
+  seo/              # Favicons, imagens OG
 docs/
-  research/         # Extraction output & component specs
-  design-references/ # Screenshots
+  research/         # Saída de extração e specs de componentes
+  design-references/ # Capturas de tela
 scripts/
-  sync-agent-rules.sh  # Regenerate agent instruction files
-  sync-skills.mjs      # Regenerate /clone-website for all platforms
-AGENTS.md           # Agent instructions (single source of truth)
-CLAUDE.md           # Claude Code config (imports AGENTS.md)
-GEMINI.md           # Gemini CLI config (imports AGENTS.md)
+  sync-agent-rules.sh  # Regenera arquivos de instrução para agentes
+  sync-skills.mjs      # Regenera /clone-website para todas as plataformas
+AGENTS.md           # Instruções do agente (fonte única da verdade)
+CLAUDE.md           # Configuração do Claude Code (importa AGENTS.md)
+GEMINI.md           # Configuração do Gemini CLI (importa AGENTS.md)
 ```
 
-## Commands
+## Comandos
 
 ```bash
-npm run dev    # Start dev server
-npm run build  # Production build
-npm run lint   # ESLint check
-npm run typecheck # TypeScript check
-npm run check  # Run lint + typecheck + build
+npm run dev        # Inicia servidor de desenvolvimento
+npm run build      # Build de produção
+npm run lint       # Verificação ESLint
+npm run typecheck  # Verificação TypeScript
+npm run check      # Executa lint + typecheck + build
 ```
 
-### If using docker
+### Com Docker
 
 ```bash
-docker compose up app --build # build and run the app
-docker compose up dev --build # run the app in dev mode on port 3001
+docker compose up app --build  # Compila e executa o app
+docker compose up dev --build  # Executa o app em modo dev na porta 3001
 ```
 
-## Updating for Other Platforms
+## Atualização para Outras Plataformas
 
-Two source-of-truth files power all platform support. Edit the source, then run the sync script:
+Dois arquivos-fonte da verdade sustentam todo o suporte a plataformas. Edite o fonte e depois execute o script de sincronização:
 
-| What                   | Source of truth                         | Sync command                       |
-| ---------------------- | --------------------------------------- | ---------------------------------- |
-| Project instructions   | `AGENTS.md`                             | `bash scripts/sync-agent-rules.sh` |
-| `/clone-website` skill | `.claude/skills/clone-website/SKILL.md` | `node scripts/sync-skills.mjs`     |
+| O quê | Fonte da verdade | Comando de sincronização |
+| --- | --- | --- |
+| Instruções do projeto | `AGENTS.md` | `bash scripts/sync-agent-rules.sh` |
+| Skill `/clone-website` | `.claude/skills/clone-website/SKILL.md` | `node scripts/sync-skills.mjs` |
 
-Each script regenerates the platform-specific copies automatically. Agents that read the source files natively need no regeneration.
+Cada script regenera automaticamente as cópias específicas de cada plataforma. Agentes que leem os arquivos-fonte nativamente não precisam de regeneração.
 
+## Dica para Usuários Windows
 
-## Star History
+Se o `claude --chrome` não conectar o Chrome MCP corretamente, use o Playwright como alternativa de automação de browser:
+
+```bash
+# Fora do Claude Code, no terminal:
+claude mcp add playwright -- npx -y @playwright/mcp@latest
+
+# Depois abra o Claude Code normalmente:
+claude
+```
+
+## Histórico de Estrelas (Projeto Original)
 
 [![Star History Chart](https://api.star-history.com/svg?repos=JCodesMore/ai-website-cloner-template&type=Date)](https://star-history.com/#JCodesMore/ai-website-cloner-template&Date)
 
-## License
+## Créditos
 
-MIT
+- **Autor original:** [JCodesMore](https://github.com/JCodesMore) — [Repositório original](https://github.com/JCodesMore/ai-website-cloner-template)
+- **Tradução PT-BR:** [Adinan001](https://github.com/Adinan001) — [MMG Soluções](https://github.com/Adinan001)
+
+## Licença
+
+MIT — veja o [repositório original](https://github.com/JCodesMore/ai-website-cloner-template/blob/master/LICENSE) para detalhes.
